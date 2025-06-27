@@ -9,9 +9,9 @@ const UserList = () => {
             {id: 3, name: "Charliee", age: 35},
 ]
     return(
-        <div>
+        <div style={{display: "flex", alignContent: "center", justifyContent: "center", flexDirection: "column"}}>
             {
-                users.map(({id,name, age}) => (
+                users.map(({id, name, age}) => (
                         <div key={id}>
                             <h1>{name}</h1>
                             <h1>{age}</h1>
