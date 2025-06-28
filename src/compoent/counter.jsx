@@ -10,7 +10,7 @@ const Counter = () => {
         setCount(count + 1);
     
     }
-    const currentvalue = count;
+     const currentvalue = count;
     return (
         <div>
             <h1>Count: {count}</h1>

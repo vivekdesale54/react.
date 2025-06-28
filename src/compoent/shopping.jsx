@@ -7,16 +7,15 @@ const ShoppingList = () => {
     const [quantity, setquantity] = useState('');
 
    const submitHandler = e => {
-        e.preventDefault();
+        e.preventDefault()
 
 
-        if(!name || !quantity) return;
-
+        if(!name || !quantity) {return;}
         const newItem = {
-            name, quantity: parseInt(quantity)
+            name, quantity: parseInt(quantity),
     };
 
-    setItems((preItems) => [...preItems, newItem])
+    setItems((prevItems) => [...prevItems, newItem])
     setName(" ");
     setquantity('');
 

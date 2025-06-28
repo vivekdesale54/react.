@@ -22,13 +22,21 @@ import TodoList from "./compoent/TodoLIst.jsx";
 // import Profile from "./compoent/profile.jsx";
 import ShoppingList from "./compoent/shopping.jsx";
 import CopyInput from "./compoent/copyinput.jsx";
-
+import Switch from "./compoent/switcher.jsx";
+import Effect from "./compoent/use.jsx"
+import Apifetch from "./compoent/apifetch.jsx";
+import BasicEffect from "./compoent/basiceffect.jsx";
+import CounterEffect from "./compoent/countereffect.jsx";
+import { createContext } from "react";
+import ComponentA from "./compoent/componenta.jsx";
 
 const Cart = () => {
- 
+
+
   const Items = ["Kurta", "Shirt", "Pant", "T-Shirt", "Jeans"];
   return (
-    <div>
+      <div>
+      
       <h1>Cart 🛒</h1>
       {Items.length > 0 && <h2>You have {Items.length} items in your Cart</h2>}
       <ul>
@@ -41,7 +49,13 @@ const Cart = () => {
     </div>
   )
 }
+
+export const Data = createContext();
+
 const App = () => {
+     const name = "Vivek"; 
+     
+
    const [movie, setMovie] = useState({
     title: "3 Idiots", 
     rating: 7.5,
@@ -66,7 +80,12 @@ const App = () => {
      return isvalid ? < ValidPass />: <InvalidPass />;
   }
   return(
+  
   <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
+    < Data.Provider value={name} >
+      <ComponentA />
+    </Data.Provider>
+    <CounterEffect />
     <h2>{count}</h2>
     <button onClick={increment}>+</button>
     <h1>{movie.title}</h1>
@@ -76,6 +95,10 @@ const App = () => {
       <li key={Math.random()}>{m.title}</li>))}
       <button onClick={onClickChange}>Change movie</button>
     </section>
+    <BasicEffect />
+    <Apifetch />
+    <Effect />
+    <Switch />
     <CopyInput /> 
     <TodoList />
     <Counter />
