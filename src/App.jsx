@@ -29,6 +29,7 @@ import BasicEffect from "./compoent/basiceffect.jsx";
 import CounterEffect from "./compoent/countereffect.jsx";
 import { createContext } from "react";
 import ComponentA from "./compoent/componenta.jsx";
+import Fetchdata from "./compoent/fetchdataeffect.jsx";
 
 const Cart = () => {
 
@@ -51,9 +52,10 @@ const Cart = () => {
 }
 
 export const Data = createContext();
-
+export const Data1 = createContext();
 const App = () => {
      const name = "Vivek"; 
+     const age = 25; 
      
 
    const [movie, setMovie] = useState({
@@ -82,8 +84,10 @@ const App = () => {
   return(
   
   <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
-    < Data.Provider value={name} >
-      <ComponentA />
+    <Data.Provider value={name} >
+    <Data1.Provider value={age} >
+       <ComponentA />
+    </Data1.Provider>
     </Data.Provider>
     <CounterEffect />
     <h2>{count}</h2>
@@ -95,6 +99,7 @@ const App = () => {
       <li key={Math.random()}>{m.title}</li>))}
       <button onClick={onClickChange}>Change movie</button>
     </section>
+    <Fetchdata />
     <BasicEffect />
     <Apifetch />
     <Effect />
