@@ -30,6 +30,9 @@ import CounterEffect from "./compoent/countereffect.jsx";
 import { createContext } from "react";
 import ComponentA from "./compoent/componenta.jsx";
 import Fetchdata from "./compoent/fetchdataeffect.jsx";
+import { useContext } from "react";
+import UserContext from "./compoent/Usercontext.jsx";
+
 
 const Cart = () => {
 
@@ -53,9 +56,12 @@ const Cart = () => {
 
 export const Data = createContext();
 export const Data1 = createContext();
+export const Data3 = createContext();
+
 const App = () => {
      const name = "Vivek"; 
      const age = 25; 
+     const naming = 38;
      
 
    const [movie, setMovie] = useState({
@@ -70,25 +76,30 @@ const App = () => {
     {id: 2, title: "7 Idiots", rating: 8.5},
   ])
   
-  const onClickChange =() => {
+  const onClickChange = () => {
     setMovies2(movies2.map(m => m.id === 1 ? {...movies2, title: "3 Iditos"}: m));
-  }
+  };
 
-   const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
   const increment = () => setCount(count + 2);
   const ValidPass = () => <h1>Valid Password</h1>
   const InvalidPass = () => <h1>Invalid Password</h1>
   const Password = ({isvalid}) =>{
      return isvalid ? < ValidPass />: <InvalidPass />;
-  }
+  };
+
   return(
   
   <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
     <Data.Provider value={name} >
     <Data1.Provider value={age} >
-       <ComponentA />
+        <ComponentA />
     </Data1.Provider>
     </Data.Provider>
+    <Data3.Provider value={naming}> 
+        <UserContext />
+    </Data3.Provider>
+
     <CounterEffect />
     <h2>{count}</h2>
     <button onClick={increment}>+</button>
